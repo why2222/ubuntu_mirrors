@@ -6,7 +6,7 @@ count=0
 declare -a pings
 for i in $(cat ubuntu_mirrors)
 	do
-		echo 'ping...'
+		echo "ping...$i"
 		echo `ping $i -c 3 | grep 64 | awk '{print $7}' | awk 'BEGIN{FS="="}{print $2}' | awk '{sum+=$1}END{print sum/NR}' | awk 'BEGIN{FS="."}{print $1}'` " $i"  >> tmp.txt
 		let count+=1
 	done
